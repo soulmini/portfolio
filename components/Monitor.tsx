@@ -9,7 +9,6 @@ const SCREEN_H = 'min(500px, 54vh)';
 
 export default function Monitor({ onRestart }: { onRestart?: () => void }) {
   const [poweredOn, setPoweredOn] = useState(false);
-
   useEffect(() => {
     const t = setTimeout(() => setPoweredOn(true), 300);
     return () => clearTimeout(t);
@@ -115,7 +114,8 @@ export default function Monitor({ onRestart }: { onRestart?: () => void }) {
       />
 
       {/* ══ KEYBOARD ═════════════════════════════════════════════════════════ */}
-      <div style={{ marginTop: 6 }}>
+      <style>{`@media (max-width: 1023px) { .kb-wrap { display: none !important; } }`}</style>
+      <div className="kb-wrap" style={{ marginTop: 6 }}>
         <Keyboard />
       </div>
     </div>
